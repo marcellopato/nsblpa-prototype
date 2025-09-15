@@ -1,48 +1,739 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NSBLPA - Propriedade</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ownership - NSBLPA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF5722;
+            --secondary: #2196F3;  
+            --accent: #00BCD4;
+            --dark: #1A1A2E;
+            --darker: #16213E;
+            --light: #F5F7FA;
+            --white: #FFFFFF;
+            --text-light: #B0BEC5;
+            --gradient-primary: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);
+            --gradient-secondary: linear-gradient(135deg, #2196F3 0%, #42A5F5 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(33, 150, 243, 0.8) 50%, rgba(255, 87, 34, 0.9) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: var(--light);
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background: var(--gradient-secondary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-cta {
+            background: var(--gradient-primary) !important;
+            color: white !important;
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Ownership Overview */
+        .ownership-overview {
+            padding: 120px 5%;
+            background: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        .ownership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .ownership-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .ownership-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            height: 200px;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+        }
+        
+        .card-content {
+            padding: 30px;
+        }
+        
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .card-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Financial Section */
+        .financial-section {
+            padding: 120px 5%;
+            background: var(--light);
+        }
+        
+        .financial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .financial-content h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .financial-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .financial-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .highlight-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .highlight-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .highlight-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .financial-chart {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+        
+        .chart-placeholder {
+            text-align: center;
+            color: #666;
+        }
+        
+        .chart-placeholder i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        /* Investors Section */
+        .investors-section {
+            padding: 120px 5%;
+            background: var(--white);
+        }
+        
+        .investors-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .investor-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .investor-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .investor-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .investor-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .investor-type {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+            color: white;
+            padding: 60px 5% 30px;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .ownership-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .financial-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .financial-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html" class="logo">NSBLPA</a>
-      <ul>
-        <li><a href="ownership.html">Propriedade</a></li>
-        <li><a href="teams.html">Times</a></li>
-        <li><a href="apps.html">Apps</a></li>
-        <li><a href="contact.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section class="hero">
-      <h1>Estrutura de Propriedade NSBLPA</h1>
-      <p>Transparência e inovação na governança da liga. Inspirado no modelo do SalesBets.com, com foco em sustentabilidade e crescimento.</p>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <h1>NSBLPA</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ownership.html">Ownership</a></li>
+                    <li><a href="teams.html">Teams</a></li>
+                    <li><a href="apps.html">Apps</a></li>
+                    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Ownership Structure</h1>
+        <p>Transparent governance and innovative leadership driving the future of competitive sales</p>
     </section>
-    <section class="ownership-details">
-      <div class="ownership-card">
-        <img src="https://dummyimage.com/200x150/28a745/fff&text=Fundadores" alt="Fundadores NSBLPA">
-        <h2>Fundadores</h2>
-        <p>A equipe visionária por trás da NSBLPA, liderada por especialistas em vendas e tecnologia.</p>
-      </div>
-      <div class="ownership-card">
-        <img src="https://dummyimage.com/200x150/ff6b35/fff&text=Investidores" alt="Investidores NSBLPA">
-        <h2>Investidores</h2>
-        <p>Parceiros estratégicos que apoiam o crescimento da liga, incluindo fundos de investimento e empresas de tecnologia.</p>
-      </div>
-      <div class="ownership-card">
-        <img src="https://dummyimage.com/200x150/007bff/fff&text=Governanca" alt="Governança NSBLPA">
-        <h2>Governança</h2>
-        <p>Conselho de Administração independente, garantindo decisões éticas e focadas no longo prazo.</p>
-      </div>
+
+    <!-- Ownership Overview -->
+    <section class="ownership-overview">
+        <div class="section-title">
+            <h2>Leadership Structure</h2>
+        </div>
+        
+        <div class="ownership-grid">
+            <div class="ownership-card">
+                <div class="card-header" style="background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Founding Partners</h3>
+                    <p>Visionary entrepreneurs and sales industry veterans who established the NSBLPA framework and competitive standards.</p>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Founders</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">25%</span>
+                            <span class="stat-label">Equity</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">2022</span>
+                            <span class="stat-label">Founded</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ownership-card">
+                <div class="card-header" style="background: linear-gradient(135deg, #2196F3 0%, #42A5F5 100%);">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Strategic Investors</h3>
+                    <p>Leading venture capital firms and strategic partners providing growth capital and industry expertise.</p>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Investors</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">60%</span>
+                            <span class="stat-label">Equity</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$50M</span>
+                            <span class="stat-label">Invested</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ownership-card">
+                <div class="card-header" style="background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Team Ownership</h3>
+                    <p>Individual team owners and player associations holding stakes in their respective franchises and league operations.</p>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <span class="stat-number">7</span>
+                            <span class="stat-label">Team Owners</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15%</span>
+                            <span class="stat-label">Equity</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Participation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 NSBLPA. Todos os direitos reservados.</p>
-  </footer>
+
+    <!-- Financial Section -->
+    <section class="financial-section">
+        <div class="section-title">
+            <h2>Financial Performance</h2>
+        </div>
+        
+        <div class="financial-grid">
+            <div class="financial-content">
+                <h3>Revenue Growth & Sustainability</h3>
+                <p>The NSBLPA has demonstrated consistent growth since inception, with diversified revenue streams from team franchises, app monetization, sponsorships, and media rights.</p>
+                <p>Our transparent financial model ensures sustainable growth while maintaining competitive integrity and fair distribution among all stakeholders.</p>
+                
+                <div class="financial-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-number">$25M</span>
+                        <span class="highlight-label">Annual Revenue</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-number">180%</span>
+                        <span class="highlight-label">YoY Growth</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-number">7</span>
+                        <span class="highlight-label">Active Teams</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-number">$5M</span>
+                        <span class="highlight-label">Prize Pool</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financial-chart">
+                <div class="chart-placeholder">
+                    <i class="fas fa-chart-area"></i>
+                    <h4>Revenue Growth Chart</h4>
+                    <p>Interactive financial dashboard coming soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investors Section -->
+    <section class="investors-section">
+        <div class="section-title">
+            <h2>Strategic Partners</h2>
+        </div>
+        
+        <div class="investors-list">
+            <div class="investor-item">
+                <div class="investor-logo">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="investor-name">Venture Capital LLC</div>
+                <div class="investor-type">Lead Investor</div>
+            </div>
+            
+            <div class="investor-item">
+                <div class="investor-logo">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="investor-name">Sales Tech Ventures</div>
+                <div class="investor-type">Strategic Partner</div>
+            </div>
+            
+            <div class="investor-item">
+                <div class="investor-logo">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="investor-name">Innovation Partners</div>
+                <div class="investor-type">Growth Capital</div>
+            </div>
+            
+            <div class="investor-item">
+                <div class="investor-logo">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="investor-name">Global Sports Fund</div>
+                <div class="investor-type">Industry Specialist</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>National Sales Bet League Professional Association</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 NSBLPA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ownership cards hover effects
+            const ownershipCards = document.querySelectorAll('.ownership-card');
+            
+            ownershipCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Investor items animation
+            const investorItems = document.querySelectorAll('.investor-item');
+            
+            investorItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+                
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.05)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Financial highlights counter animation
+            const highlightNumbers = document.querySelectorAll('.highlight-number');
+            
+            const animateNumbers = () => {
+                highlightNumbers.forEach(number => {
+                    const targetText = number.textContent;
+                    const targetNumber = parseInt(targetText.replace(/[^0-9]/g, ''));
+                    
+                    if (targetNumber) {
+                        let current = 0;
+                        const increment = targetNumber / 50;
+                        const suffix = targetText.replace(/[0-9]/g, '');
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= targetNumber) {
+                                number.textContent = targetText;
+                                clearInterval(timer);
+                            } else {
+                                number.textContent = Math.floor(current) + suffix;
+                            }
+                        }, 50);
+                    }
+                });
+            };
+
+            // Trigger animation when financial section is in view
+            const financialSection = document.querySelector('.financial-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(financialSection);
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn && nav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

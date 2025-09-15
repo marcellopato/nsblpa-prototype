@@ -1,4 +1,73 @@
-# NSBLPA Prototype
+# NSBLPA Website Redesign
+
+## Project Overview
+This is a responsive HTML prototype for the National Sales Bet League Professional Association (NSBLPA) website redesign. The site features a modern, clean, mobile-first design focused on competitive sales league presentation.
+
+## Pages Included
+- **Home Page** (`index.html`) - Main landing page with overview and navigation
+- **Ownership Page** (`ownership.html`) - Information about league ownership structure
+- **Teams Page** (`teams.html`) - Grid of seven teams with logos and links
+- **Apps Page** (`apps.html`) - Categorized list of all Android applications
+- **Contact Page** (`contact.html`) - Contact form and information
+
+## Technical Features
+- **HTML5, CSS3, and vanilla JavaScript (ES6)**
+- **Responsive design** with mobile-first approach
+- **Modern CSS Grid and Flexbox** layouts
+- **Smooth animations** and hover effects
+- **Accessibility features** including semantic HTML and alt text
+- **Font Awesome icons** for visual elements
+- **Optimized performance** with efficient CSS and minimal JavaScript
+
+## Teams Included
+1. New York Profit Pursuers
+2. Atlanta Revenue Rockstars
+3. Denver Deal Dynamos
+4. Chicago Sales Sharks
+5. Texas Deal Makers
+6. DC Sales Eagles
+7. Miami Revenue Runners
+
+## Apps Categories
+- **Main/Team Apps**: SalesBet Influencers and individual team apps
+- **Fan Apps**: Team-specific fan applications
+- **League/Ownership/Players**: Management and network applications
+- **FVN/Advertisers**: Business and advertising tools
+
+## How to Run Locally
+1. Clone or download the `nsblpa-prototype` folder
+2. Open `index.html` in any modern web browser
+3. Navigate through the site using the main navigation menu
+4. All pages are standalone HTML files with embedded CSS and JavaScript
+
+## Design Assumptions
+- **Color Scheme**: Professional orange (#FF5722) and blue (#2196F3) palette
+- **Typography**: Clean, modern sans-serif fonts for readability
+- **Layout**: Grid-based responsive design that works on all devices
+- **User Experience**: Intuitive navigation with clear call-to-action buttons
+- **Performance**: Optimized for fast loading with minimal external dependencies
+
+## Browser Compatibility
+- Chrome 80+
+- Firefox 75+
+- Safari 13+
+- Edge 80+
+
+## Assets Used
+- Font Awesome 6.4.0 for icons
+- Google Fonts integration ready
+- Optimized placeholder images
+- Custom SVG logo elements
+
+## Future Enhancements
+- Backend integration for contact forms
+- Content Management System
+- Advanced analytics integration
+- SEO optimization
+- Progressive Web App features
+
+---
+**Note**: This is a static prototype without backend functionality. All forms and interactive elements are styled but not functionally connected to databases.
 
 ## Visão Geral
 Protótipo responsivo e moderno do site NSBLPA.com, desenvolvido em HTML5, CSS3 e JavaScript puro, sem backend. O objetivo é apresentar um layout limpo, mobile-first e acessível, com as seguintes páginas:
