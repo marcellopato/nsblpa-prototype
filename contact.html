@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSBLPA - Contato</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">NSBLPA</a>
+      <ul>
+        <li><a href="ownership.html">Propriedade</a></li>
+        <li><a href="teams.html">Times</a></li>
+        <li><a href="apps.html">Apps</a></li>
+        <li><a href="contact.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Entre em Contato</h1>
+      <p>Tem dúvidas ou sugestões? Envie-nos uma mensagem. Responderemos o mais breve possível.</p>
+      <div class="contact-container">
+        <form class="contact-form" autocomplete="off">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required placeholder="seu@email.com">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Digite sua mensagem aqui..."></textarea>
+          <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+        <div class="contact-info">
+          <img src="https://dummyimage.com/200x150/4a90e2/fff&text=Contato" alt="Imagem de contato">
+          <h2>Informações de Contato</h2>
+          <p><strong>Email:</strong> <a href="mailto:contato@nsblpa.com">contato@nsblpa.com</a></p>
+          <p><strong>Endereço:</strong> 123 Business Ave, São Paulo, SP, Brasil</p>
+          <p><strong>Telefone:</strong> +55 11 9999-9999</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 NSBLPA. Todos os direitos reservados.</p>
+  </footer>
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      if (name && email && message) {
+        alert('Obrigado, ' + name + '! Sua mensagem foi enviada com sucesso. (Simulação)');
+        this.reset();
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    });
+  </script>
+</body>
+</html>
